@@ -1,4 +1,3 @@
-// src/App.js
 import React from 'react';
 import './App.css';
 import Chat from './components/Chat';
@@ -7,7 +6,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>UPA LEAGUE</h1>
+        <img src="/updated-logo.png" className="App-logo" alt="logo" />
+        <h1 className="App-title">UPA LEAGUE</h1>
       </header>
       <Chat />
     </div>

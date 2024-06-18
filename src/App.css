@@ -24,12 +24,24 @@ body {
 }
 
 .App-header {
-  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #202225;
-  color: #fff;
-  text-align: center;
-  font-size: 1.5em;
-  border-bottom: 1px solid #202225;
+  padding: 20px;
+  color: white;
+  position: relative;
+}
+
+.App-logo {
+  height: 60px; /* Increased size */
+  position: absolute;
+  left: 20px;
+}
+
+.App-title {
+  margin: 0;
+  font-size: 1.5rem;
 }
 
 .chat-container {
@@ -170,6 +182,15 @@ button:hover {
   .App-header {
     font-size: 1.2em;
     padding: 10px;
+  }
+
+  .App-logo {
+    height: 40px;
+    left: 10px;
+  }
+
+  .App-title {
+    font-size: 1.2rem;
   }
 
   .message .avatar {
