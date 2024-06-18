@@ -1,0 +1,87 @@
+/* src/components/ProfileEditModal.css */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #2f3136;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+  color: #dcddde;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="file"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #40444b;
+  color: #dcddde;
+}
+
+.avatar-preview {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-top: 10px;
+  object-fit: cover;
+  border: 2px solid #7289da;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.save-button,
+.cancel-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  flex: 1;
+  margin: 5px;
+}
+
+.save-button {
+  background-color: #7289da;
+  color: #fff;
+}
+
+.cancel-button {
+  background-color: #f04747;
+  color: #fff;
+}
+
+.save-button:hover,
+.cancel-button:hover {
+  opacity: 0.9;
+}

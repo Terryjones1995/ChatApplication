@@ -1,0 +1,57 @@
+/* src/components/Profile.css */
+.profile-container {
+  position: relative;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #23272a;
+  border-top: 1px solid #202225;
+  color: #dcddde;
+}
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #7289da;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+  background-size: cover;
+  background-position: center;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.profile-username {
+  font-weight: bold;
+}
+
+.profile-status {
+  font-size: 12px;
+  color: #72767d;
+}
+
+.edit-button {
+  padding: 5px 10px;
+  background-color: #7289da;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  background-color: #5a6ebc;
+}
