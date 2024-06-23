@@ -4,6 +4,7 @@ import io from 'socket.io-client';
 import ChatInput from './ChatInput';
 import Message from './Message';
 import Profile from './Profile';
+import './Chat.css'; // Include the new CSS file
 
 const socket = io('http://localhost:4000'); // Your backend server URL
 
@@ -18,9 +19,11 @@ function Chat() {
     return savedProfile ? JSON.parse(savedProfile) : {
       username: "User",
       avatar: "https://via.placeholder.com/40",
+      team: "Team Name", // Default team name
     };
   });
 
+  const [menuOpen, setMenuOpen] = useState(false);
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
@@ -51,6 +54,7 @@ function Chat() {
       ...message,
       username: profile.username,
       avatar: profile.avatar,
+      team: profile.team,
       timestamp: new Date().toISOString(),
     };
     socket.emit('message', messageToSend);
@@ -61,6 +65,7 @@ function Chat() {
       ...message,
       username: updatedProfile.username,
       avatar: updatedProfile.avatar,
+      team: updatedProfile.team,
     }));
     setMessages(updatedMessages);
     localStorage.setItem('messages', JSON.stringify(updatedMessages));
@@ -72,11 +77,56 @@ function Chat() {
     updateMessagesWithProfile(updatedProfile);
   };
 
+  const copyMessage = (message) => {
+    navigator.clipboard.writeText(message.text);
+  };
+
+  const editMessage = (updatedMessage) => {
+    const updatedMessages = messages.map((msg) =>
+      msg.timestamp === updatedMessage.timestamp ? updatedMessage : msg
+    );
+    setMessages(updatedMessages);
+    localStorage.setItem('messages', JSON.stringify(updatedMessages));
+  };
+
+  const deleteMessage = (message) => {
+    const updatedMessages = messages.filter(
+      (msg) => msg.timestamp !== message.timestamp
+    );
+    setMessages(updatedMessages);
+    localStorage.setItem('messages', JSON.stringify(updatedMessages));
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <div className="chat-container">
+      <div className="header">
+        <span>Community Chat</span>
+        <div className="hamburger-menu" onClick={toggleMenu}>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      {menuOpen && (
+        <div className="menu-items">
+          <a href="#">Profile</a>
+          <a href="#">Settings</a>
+          <a href="#">Logout</a>
+        </div>
+      )}
       <div className="messages">
         {messages.map((message, index) => (
-          <Message key={index} message={message} />
+          <Message
+            key={index}
+            message={message}
+            onCopy={copyMessage}
+            onEdit={editMessage}
+            onDelete={deleteMessage}
+          />
         ))}
         <div ref={messagesEndRef} />
       </div>

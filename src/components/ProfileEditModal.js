@@ -5,6 +5,7 @@ import './ProfileEditModal.css';
 function ProfileEditModal({ currentProfile, onSave, onClose }) {
   const [username, setUsername] = useState(currentProfile.username);
   const [avatar, setAvatar] = useState(currentProfile.avatar);
+  const [team, setTeam] = useState(currentProfile.team || '');
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -18,7 +19,7 @@ function ProfileEditModal({ currentProfile, onSave, onClose }) {
   };
 
   const handleSave = () => {
-    onSave({ username, avatar });
+    onSave({ username, avatar, team });
     onClose();
   };
 
@@ -38,6 +39,14 @@ function ProfileEditModal({ currentProfile, onSave, onClose }) {
           Avatar:
           <input type="file" accept="image/*" onChange={handleFileChange} />
           {avatar && <img src={avatar} alt="Avatar preview" className="avatar-preview" />}
+        </label>
+        <label>
+          Team:
+          <input
+            type="text"
+            value={team}
+            onChange={(e) => setTeam(e.target.value)}
+          />
         </label>
         <div className="buttons">
           <button onClick={handleSave} className="save-button">Save</button>

@@ -21,6 +21,10 @@ function Profile({ profile, onProfileUpdate }) {
           <div className="profile-username">{profile.username}</div>
           <div className="profile-status">Online</div>
         </div>
+        <div className="profile-team-container">
+          <div className="profile-team-label">Current Team:</div>
+          <div className="profile-team">{profile.team}</div>
+        </div>
         <button onClick={() => setIsEditing(true)} className="edit-button">Edit</button>
       </div>
       {isEditing && (
